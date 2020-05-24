@@ -1,5 +1,6 @@
 import 'package:bakas/model/product.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Products with ChangeNotifier {
   List<Product> _items = [
@@ -66,7 +67,11 @@ class Products with ChangeNotifier {
   }
 
   //this function adds new product
-  void addProduct(Product product) {
+  void addProduct(Product product) async {
+    const url = "https://baakas-ddd52.firebaseio.com/products.json";
+    const test = "http://ip.jsontest.com";
+    http.Response response = await http.get(test);
+    print(response.body);
     final newProduct = Product(
       id: DateTime.now().toString(),
       title: product.title,

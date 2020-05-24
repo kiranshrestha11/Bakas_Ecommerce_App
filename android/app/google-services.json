@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "403917510865",
+    "firebase_url": "https://baakas-ddd52.firebaseio.com",
+    "project_id": "baakas-ddd52",
+    "storage_bucket": "baakas-ddd52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403917510865:android:ff123116a026db15a64df0",
+        "android_client_info": {
+          "package_name": "com.kiran.bakas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403917510865-n3s9gakq23mkfv4a0bebhnscn81057d4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJEEJiGECd6o5l5mFjTYlocBwolVd0z_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403917510865-n3s9gakq23mkfv4a0bebhnscn81057d4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
