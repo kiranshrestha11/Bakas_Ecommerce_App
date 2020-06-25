@@ -10,9 +10,9 @@ class ProductGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final products = showFavourites
-        ? Provider.of<Products>(context).favourites
-        : Provider.of<Products>(context).items;
+    final loadedProducts = Provider.of<Products>(context);
+    final products =
+        showFavourites ? loadedProducts.favourites : loadedProducts.items;
     return GridView.builder(
       itemCount: products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

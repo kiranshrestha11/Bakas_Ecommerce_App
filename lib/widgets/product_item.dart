@@ -1,5 +1,6 @@
 import 'package:bakas/model/cart_provider.dart';
 import 'package:bakas/model/product.dart';
+import 'package:bakas/provider/auth_provider.dart';
 import 'package:bakas/screen/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +9,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loadedProduct = Provider.of<Product>(context, listen: false);
+    final auth = Provider.of<Auth>(context, listen: false);
     final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
@@ -17,9 +19,15 @@ class ProductItem extends StatelessWidget {
             Navigator.pushNamed(context, ProductDetail.routeName,
                 arguments: loadedProduct.id);
           },
-          child: Image.network(
-            loadedProduct.imageUrl,
-            fit: BoxFit.contain,
+          child: Hero(
+            tag: 'product${loadedProduct.id}',
+            child: FadeInImage(
+              placeholder: AssetImage("assets/images/loading.gif"),
+              image: NetworkImage(
+                loadedProduct.imageUrl,
+              ),
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         footer: GridTileBar(
@@ -32,11 +40,13 @@ class ProductItem extends StatelessWidget {
             builder: (_, product, child) {
               return IconButton(
                 icon: Icon(
-                  product.isFavourite ? Icons.favorite : Icons.favorite_border,
+                  loadedProduct.isFavourite
+                      ? Icons.favorite
+                      : Icons.favorite_border,
                   color: Colors.white54,
                 ),
                 onPressed: () {
-                  product.toggleIsFavourite();
+                  loadedProduct.toggleIsFavourite(auth.userId, auth.token);
                 },
                 color: Theme.of(context).accentColor,
               );
